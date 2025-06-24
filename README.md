@@ -6,10 +6,8 @@
 
 ## Información del Alumno
 
-**Nombre y Apellido:** [Escribir aquí tu nombre y apellido]
-
-**Curso:** [Escribir aquí tu curso]
-
+**Nombre y Apellido:** santino donati
+**Curso:**  4°I
 **Fecha de entrega:** [Escribir aquí la fecha de entrega]
 
 ---
