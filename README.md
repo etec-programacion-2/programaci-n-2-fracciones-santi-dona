@@ -248,7 +248,7 @@ Es **obligatorio** entregar todos los prompts utilizados con inteligencias artif
 
 #### Ejemplo de formato para `prompts.md`:
 
-```
+
 ### Prompt 1
 - Fecha: 2024-04-10
 - Herramienta: ChatGPT
