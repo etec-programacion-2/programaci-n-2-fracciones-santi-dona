@@ -23,8 +23,11 @@ fun main() {
     val restaBC = fraccionB - fraccionC
     print("B - C = "); restaBC.mostrar()  // 3/4 - 2/5 = 7/20
 
-    val sumaAC = fraccionA + fraccionC
-    print("A + C = "); sumaAC.mostrar()  // 1/2 + 2/5 = 9/10
+    val multiplicacionAB = fraccionA * fraccionB
+    print("A * B = "); multiplicacionAB.mostrar()  // 1/2 * 3/4 = 3/8
+
+    val divisionAB = fraccionA / fraccionB
+    print("A / B = "); divisionAB.mostrar()  // 1/2 / 3/4 = 2/3
 
     // Caso especial: simplificación
     val fraccionD = Fraccion(4, 8)
@@ -44,5 +47,14 @@ fun main() {
         fraccionValida.denominador = 0
     } catch (e: IllegalArgumentException) {
         println("Error al modificar denominador: ${e.message}")
+    }
+
+    // Validación de división por cero
+    try {
+        val fraccionE = Fraccion(1, 2)
+        val fraccionF = Fraccion(0, 1) // Numerador cero
+        fraccionE / fraccionF
+    } catch (e: IllegalArgumentException) {
+        println("Error al dividir: ${e.message}")  // Debe mostrar error
     }
 }
