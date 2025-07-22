@@ -29,6 +29,21 @@ fun main() {
     val divisionAB = fraccionA / fraccionB
     print("A / B = "); divisionAB.mostrar()  // 1/2 / 3/4 = 2/3
 
+    // Comparaciones
+    println("\nComparaciones:")
+    println("A es mayor que B: ${fraccionA.esMayor(fraccionB)}")  // false
+    println("A es menor que B: ${fraccionA.esMenor(fraccionB)}")  // true
+
+    // Conversión a decimal
+    println("\nConversión a decimal:")
+    println("A en decimal: ${fraccionA.aDecimal()}")  // 0.5
+    println("B en decimal: ${fraccionB.aDecimal()}")  // 0.75
+
+    // Crear fracción desde decimal
+    val fraccionDesdeDecimal = Fraccion.desdeDecimal(0.75)
+    println("\nFracción desde decimal 0.75:")
+    fraccionDesdeDecimal.mostrar()  // Debe mostrar 3/4
+
     // Caso especial: simplificación
     val fraccionD = Fraccion(4, 8)
     println("\nSimplificación automática:")
