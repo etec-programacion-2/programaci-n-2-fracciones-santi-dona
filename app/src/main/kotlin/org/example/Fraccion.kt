@@ -16,6 +16,11 @@ class Fraccion(private var _numerador: Int = 0, private var _denominador: Int = 
 
     init {
         require(_denominador != 0) { "El denominador no puede ser cero" }
+        // Manejo de fracciones negativas
+        if (_denominador < 0) {
+            _numerador = -_numerador
+            _denominador = -_denominador
+        }
     }
 
     operator fun plus(otra: Fraccion): Fraccion {
@@ -47,6 +52,46 @@ class Fraccion(private var _numerador: Int = 0, private var _denominador: Int = 
         ).simplificar()
     }
 
+    operator fun compareTo(otra: Fraccion): Int {
+        val diferencia = numerador * otra.denominador - otra.numerador * denominador
+        return when {
+            diferencia > 0 -> 1
+            diferencia < 0 -> -1
+            else -> 0
+        }
+    }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is Fraccion) return false
+        return this.numerador == other.numerador && this.denominador == other.denominador
+    }
+
+    fun esMayor(otra: Fraccion): Boolean {
+        return this > otra
+    }
+
+    fun esMenor(otra: Fraccion): Boolean {
+        return this < otra
+    }
+
+    fun aDecimal(): Double {
+        return numerador.toDouble() / denominador.toDouble()
+    }
+
+    companion object {
+        fun desdeDecimal(decimal: Double): Fraccion {
+            val tolerancia = 1E-10
+            var numerador = decimal
+            var denominador = 1.0
+            while (abs(numerador - Math.round(numerador)) > tolerancia) {
+                numerador *= 10
+                denominador *= 10
+            }
+            return Fraccion(numerador.toInt(), denominador.toInt()).simplificar()
+        }
+    }
+
     private fun simplificar(): Fraccion {
         val mcd = calcularMCD(abs(numerador), abs(denominador))
         return Fraccion(numerador / mcd, denominador / mcd)
@@ -60,3 +105,4 @@ class Fraccion(private var _numerador: Int = 0, private var _denominador: Int = 
 
     override fun toString(): String = "${numerador}/${denominador}"
 }
+
